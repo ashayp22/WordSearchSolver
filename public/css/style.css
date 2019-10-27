@@ -1,0 +1,106 @@
+
+body {
+  background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
+}
+
+img {
+  width: 40vh;
+  height: 40vh;
+}
+
+#loadingtext {
+  display: none;
+  visibility: hidden;
+}
+
+#loader {
+  display: none;
+  border: 16px solid #f3f3f3;
+  visibility: hidden;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  text-align: center;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#info {
+  height:100%;
+  width: 100%;
+  display: inline-block;
+border: 15px double rgba(36,96,164,0.97);
+border-radius: 35px 35px 35px 35px;
+}
+
+p, input{
+  font-style: italic;
+  font-size: 3vh;
+  font-weight: bold;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.myButton {
+	box-shadow: 0px 0px 0px 2px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:10px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#000;
+font-family: 'Source Sans Pro', sans-serif;
+	font-size:19px;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#inp {
+     text-align: center;
+     margin: auto;
+     top: 50%;
+}
+
+header {
+  background-color: rgba(36,96,164,0.97);
+  padding: 30px;
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  font-size: 6vh;;
+  font-weight: bold;
+}

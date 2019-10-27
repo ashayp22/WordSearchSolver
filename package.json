@@ -1,0 +1,24 @@
+{
+  "name": "crosswordsolver",
+  "version": "1.0.0",
+  "description": "solves crosswords by taking a photo and finding the words",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashay Parikh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "childprocess": "^2.0.2",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "helmet": "^3.21.2",
+    "jimp": "^0.8.5",
+    "jsdom": "^15.2.0",
+    "path": "^0.12.7",
+    "png-to-jpeg": "^1.0.1"
+  }
+}
