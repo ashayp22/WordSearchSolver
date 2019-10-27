@@ -8,6 +8,7 @@ const pngToJpeg = require('png-to-jpeg');
 const path = require('path')
 const Jimp = require('jimp');
 const exec = require('child_process').exec;
+const mv = require('mv');
 
 
 app.use(express.static('public'));
@@ -78,7 +79,11 @@ app.post('/fileupload', function (req, res) { //handles post request
             res.end(); //end
           }
       } else if(extension == ".jpg"){ //JPEG
-        fs.rename(files.filetoupload.path, "public/resources/answer.jpg", function (err) {
+
+        mv(files.filetoupload.path, "public/resources/answer.jpg", function(err) {
+          // done. it tried fs.rename first, and then falls back to
+          // piping the source file to the dest file and then unlinking
+          // the source file.
           if (err) throw err;
           console.log('Rename complete!');
 
@@ -93,6 +98,10 @@ app.post('/fileupload', function (req, res) { //handles post request
             res.end(); //end
           }
         });
+
+        // fs.rename(files.filetoupload.path, "public/resources/answer.jpg", function (err) {
+        //
+        // });
       } else { //wrong extension
         console.log('wrong extension!');
         res.render('index');
