@@ -89,11 +89,10 @@ app.post('/fileupload', function (req, res) { //handles post request
 
           //now we add in the highlights
 
-          var cmd = "py -3.6 findwords.py";
+          var cmd = 'py -3.6 findwords.py';
           exec(cmd, (err, stdout, stderr) => {
             if (err) {
               console.error(err);
-              return;
             }
             console.log("called python")
             res.render('response');
