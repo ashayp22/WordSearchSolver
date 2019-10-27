@@ -90,13 +90,17 @@ app.post('/fileupload', function (req, res) { //handles post request
           //now we add in the highlights
 
           var cmd = "py -3.6 findwords.py";
-          exec(cmd, allDone);
-
-          function allDone() {
+          exec(cmd, (err, stdout, stderr) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
             console.log("called python")
             res.render('response');
             res.end(); //end
-          }
+          });
+
+
         });
 
         // fs.rename(files.filetoupload.path, "public/resources/answer.jpg", function (err) {
