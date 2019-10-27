@@ -63,7 +63,7 @@ app.post('/fileupload', function (req, res) { //handles post request
             return image
               .quality(100) // set JPEG quality
               .greyscale() // set greyscale
-              .write('public/resources/answer.jpg'); // save
+              .write('public/resources/search.jpg'); // save
           })
           .catch(err => {
             console.error(err);
@@ -80,7 +80,7 @@ app.post('/fileupload', function (req, res) { //handles post request
           }
       } else if(extension == ".jpg"){ //JPEG
 
-        mv(files.filetoupload.path, "public/resources/answer.jpg", function(err) {
+        mv(files.filetoupload.path, "public/resources/search.jpg", function(err) {
           // done. it tried fs.rename first, and then falls back to
           // piping the source file to the dest file and then unlinking
           // the source file.

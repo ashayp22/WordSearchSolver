@@ -43,7 +43,7 @@ print("Loaded model 2 from disk")
 
 
 #LOAD THE WORDSEARCH
-wordsearch = cv2.imread('public/resources/answer.jpg', 0)
+wordsearch = cv2.imread('public/resources/search.jpg', 0)
 
 wordsearch = cv2.bitwise_not(wordsearch)
 
