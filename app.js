@@ -94,7 +94,7 @@ app.post('/fileupload', function (req, res) { //handles post request
             if (err) {
               console.error(err);
             }
-            console.log("called python")
+            console.log("called python ye")
             res.render('response');
             res.end(); //end
           });
