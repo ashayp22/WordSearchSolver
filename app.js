@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 3000; //either heroku port or local port
+const PORT = process.env.PORT || 3000; //either heroku port or local port
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
