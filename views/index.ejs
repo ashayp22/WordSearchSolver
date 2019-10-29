@@ -27,10 +27,9 @@
     <meta name="msapplication-TileImage" content="/resources/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src = "/scripts/script.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   </head>
   <body onload = "setup()">
@@ -43,17 +42,19 @@
     <br>
     <br>
 
+    <div id="edit">
+      <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" width="640" height="480"></canvas><br>
+    <input type = "button" id="snap" class = "myButton" onclick = "takePhoto()" value = "take photo"><br>
+    <p id = "cropInfo">Crop the image so only the crossword is shown</p><br>
+    <input type = "button" id="save" class = "myButton" onclick = "saveImage()" value = "save image"><br>
 
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap" onclick = "takePhoto()">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
-
+  </div>
     <div id="info">
 
     <!-- rest  -->
     <form action="/fileupload" id = "form" method="post" enctype="multipart/form-data"><br>
       <p>Select the crossword(jpg or png):</p> <input type="file" id = "inp" name="filetoupload"><br>
-      <input type="image" id = "option2" name = "image2" value = ""><br>
       <p>Rows:</p> <input type="number" name="rows"><br>
       <p>Columns:</p> <input type="number" name="columns"><br>
       <p>Enter a word to find:</p> <input type="text" id = "addword" name="words" value = ""><br><br>

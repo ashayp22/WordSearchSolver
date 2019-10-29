@@ -11,7 +11,7 @@ img {
   height: 40vh;
 }
 
-#loadingtext {
+#loadingtext, #cropInfo, #save {
   display: none;
   visibility: hidden;
 }
