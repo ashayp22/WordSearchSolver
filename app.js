@@ -23,6 +23,8 @@ app.post('/fileupload', function (req, res) { //handles post request
   var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
 
+      console.log(fields);
+
       //parsing words rows and columns
 
       var rows = fields.rows;

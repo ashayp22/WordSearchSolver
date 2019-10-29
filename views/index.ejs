@@ -29,13 +29,14 @@
 
 
     <script src = "/scripts/script.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   </head>
-  <body>
+  <body onload = "setup()">
     <header>
     <h1>WORD SEARCH SOLVER</h1>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Check out this cool website!" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Check out this cool website!" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
     </header>
 
@@ -43,10 +44,16 @@
     <br>
 
 
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap" onclick = "takePhoto()">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
     <div id="info">
+
     <!-- rest  -->
     <form action="/fileupload" id = "form" method="post" enctype="multipart/form-data"><br>
-      <p>Select the crossword(jpg or png):</p> <input type="file" id = "inp" name="filetoupload">
+      <p>Select the crossword(jpg or png):</p> <input type="file" id = "inp" name="filetoupload"><br>
+      <input type="image" id = "option2" name = "image2" value = ""><br>
       <p>Rows:</p> <input type="number" name="rows"><br>
       <p>Columns:</p> <input type="number" name="columns"><br>
       <p>Enter a word to find:</p> <input type="text" id = "addword" name="words" value = ""><br><br>
