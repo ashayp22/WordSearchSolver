@@ -42,8 +42,11 @@
     <div id="info">
 
       <p>HERE IS THE CROSSWORD</p>
-      <img src="resources/answer.jpg" alt='word search' id = "image" >
-
+      <img src="resources/answer.jpg" alt='word search' id = "image" ><br>
+      <% if(definitions !== null){ %>
+        <p>DEFINITIONS</p>
+        <p><%- definitions %></p>
+      <% } %>
     </info>
   </body>
 </html>

@@ -48,12 +48,14 @@
     <input type = "button" id="snap" class = "myButton" onclick = "takePhoto()" value = "take photo"><br>
     <p id = "cropInfo">Crop the image so only the crossword is shown</p><br>
     <input type = "button" id="save" class = "myButton" onclick = "saveImage()" value = "save image"><br>
+    <a id="link"></a><br>
 
   </div>
     <div id="info">
 
     <!-- rest  -->
     <form action="/fileupload" id = "form" method="post" enctype="multipart/form-data"><br>
+      <p>it's best if the word search image is clear, and there is no extra space</p><br>
       <p>Select the crossword(jpg or png):</p> <input type="file" id = "inp" name="filetoupload"><br>
       <p>Rows:</p> <input type="number" name="rows"><br>
       <p>Columns:</p> <input type="number" name="columns"><br>
@@ -65,7 +67,7 @@
       <input type="submit" value = "find words" class = "myButton" onclick="yo()">
     </form>
 
-      <p id = "loadingtext">ANALYZING THE WORDSEARCH AND FINDING THE WORDS</p><br><br>
+      <p id = "loadingtext">ANALYZING THE WORDSEARCH, FINDING THE WORDS AND DEFINITIONS</p><br><br>
       <div id ="loader"></div>
 
     </div>

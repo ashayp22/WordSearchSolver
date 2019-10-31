@@ -79,12 +79,33 @@ var mousedown = false;
 var evt;
 var currentImage;
 
+function cloneCanvas(oldCanvas) {
+
+    //create a new canvas
+    var newCanvas = document.createElement('canvas');
+    var context = newCanvas.getContext('2d');
+
+    //set dimensions
+    newCanvas.width = oldCanvas.width;
+    newCanvas.height = oldCanvas.height;
+
+    //apply the old canvas to the new one
+    context.drawImage(oldCanvas, 0, 0);
+
+    //return the new canvas
+    return newCanvas;
+}
+
 // Trigger photo take
 function takePhoto() {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
-  currentImage = video;
-	ctx.drawImage(video, 0, 0, 640, 480);
+
+  console.log(video);
+
+  ctx.drawImage(video, 0, 0, 640, 480);
+
+  currentImage = cloneCanvas(canvas);
 
   cancelAnimationFrame(animate);
   mousedown = false;
@@ -103,6 +124,8 @@ function takePhoto() {
   document.getElementById("save").style.display = "inline-block";
 
   animate();
+
+  console.log("add");
 
   // var image = new Image();
   // image.id = "pic";
@@ -223,6 +246,29 @@ $(document).ready(function() {
 });
 
 
+
+
 function saveImage() {
 
+  const cropCanvas = (sourceCanvas,left,top,width,height) => {
+      let destCanvas = document.createElement('canvas');
+      destCanvas.width = width;
+      destCanvas.height = height;
+      destCanvas.getContext("2d").drawImage(
+          sourceCanvas,
+          left,top,width,height,  // source rect with content to crop
+          0,0,width,height);      // newCanvas, same size as source rect
+      return destCanvas;
+  }
+
+  let myCanvas = document.createElement('canvas');
+      myCanvas.width = points[2].x - points[0].x - 15;
+      myCanvas.height = points[1].y - points[0].y - 15;
+      // draw stuff...
+      myCanvas = cropCanvas(document.getElementById('canvas'),points[0].x + 10,points[0].y + 10 ,points[2].x - points[0].x - 15, points[1].y - points[0].y - 15);
+
+      var link = document.getElementById('link');
+      link.setAttribute('download', 'wordsearch.png');
+      link.setAttribute('href', myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+      link.click();
 }

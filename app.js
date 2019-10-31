@@ -9,7 +9,7 @@ const path = require('path')
 const Jimp = require('jimp');
 const exec = require('child_process').exec;
 const mv = require('mv');
-
+const wd = require("word-definition");
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,7 +22,7 @@ app.get('/', function (req, res) { //handles get request
 app.post('/fileupload', function (req, res) { //handles post request
   var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      // 
+      //
       // console.log(fields);
       // console.log(files);
 
@@ -73,14 +73,18 @@ app.post('/fileupload', function (req, res) { //handles post request
           });
           //now we add in the highlights
 
-          var cmd = "py -3.6 findwords.py";
-          exec(cmd, allDone);
+          console.log("made jpg");
 
-          function allDone() {
-            console.log("called python")
+          var cmd = 'py -3.6 findwords.py';
+          exec(cmd, (err, stdout, stderr) => {
+            if (err) {
+              console.error(err);
+            }
+            console.log("called python ye")
             res.render('response');
             res.end(); //end
-          }
+          });
+
       } else if(extension == ".jpg"){ //JPEG
 
         mv(files.filetoupload.path, "public/resources/search.jpg", function(err) {
@@ -98,7 +102,14 @@ app.post('/fileupload', function (req, res) { //handles post request
               console.error(err);
             }
             console.log("called python ye")
-            res.render('response');
+
+            var contents = fs.readFileSync("public/resources/dict.json");
+            // Define to JSON type
+             var jsonContent = JSON.parse(contents);
+
+            //get definitions
+
+            res.render('response', {definitions: jsonContent.words});
             res.end(); //end
           });
 

@@ -17,6 +17,10 @@ import argparse
 import tkinter as tk
 import json
 from PIL import Image
+from PyDictionary import PyDictionary
+from nltk.corpus import wordnet
+
+
 
 K.set_image_dim_ordering('th') #sets depth, input_depth, rows, columns for the convolutional neural network
 
@@ -46,6 +50,7 @@ print("Loaded model 2 from disk")
 wordsearch = cv2.imread('public/resources/search.jpg', 0)
 
 wordsearch = cv2.bitwise_not(wordsearch)
+
 
 #check if png: if it is, convert to jpg
 
@@ -160,6 +165,14 @@ def getFormattedBoard(model, rows, columns, letter_width, letter_height, picture
             # letter = crop_image_two(letter)
             # cv2.imshow("image", letter)
             # cv2.waitKey(0)
+
+            h1, w1 = letter.shape
+
+            if(h1 <= 0 or w1 <= 0):
+                row_letters.append("a")
+                continue
+
+
             letter = cv2.resize(letter, (28, 28)) #resize the image
 
             # cv2.imshow("image", letter)
@@ -222,12 +235,7 @@ def search(board, actual_word):
                             return positions
     return []
 
-# words = ["diagnosis" , "autoimmune", "cns", "hope", "support", "treatment", "fatigue"]
-# words = ["alliteration", "antagonist", "aside", "characterization", "irony", "conflit", "hyperbole", "oxymoron", "plot", "theme", "simile"]
-# words = ["acoustics", "anatomy", "anthropology", "biology", "chemistry", "kinetics", "geology", "Ecology", "gemology", "virology", "physics", "metrology"]
-#wordsearch4
-# words = ["allele", "antigen", "bacteria", "biology", "cell", "chitin", "ecosystem", "genotype", "homeostasis", "mitosis", "virus", "vacuole", "zygote", "xylem", "photosynthesis"]
-#crosswordb
+
 highlighted = []
 
 
@@ -250,7 +258,7 @@ def white_black(wordsearch): #turns every pixel in wordsearch either black or wh
 
     for r in range(height):
         for c in range(width):
-            if wordsearch[r][c] > 150:
+            if wordsearch[r][c] > 125:
                 wordsearch[r][c] = 255
             else:
                 wordsearch[r][c] = 0
@@ -290,5 +298,26 @@ for h in highlighted:
 # cv2.waitKey(0)
 
 cv2.imwrite("public/resources/answer.jpg", wordsearch)
+
+
+#finally, find dictionary
+
+# dictionary=PyDictionary()
+
+list = ""
+
+for word in words:
+    # list += (dictionary.meaning(word)[next(iter(dictionary.meaning(word)))])[0] + "<br"
+    syns = wordnet.synsets(word)
+    list += word + ": " + syns[0].definition() + "<br><br>"
+
+# print(list)
+
+data = {}
+data["words"] = list
+
+with open('public/resources/dict.json', 'w') as outfile:
+    json.dump(data, outfile)
+
 
 #wordsearch has to have letters in the four corners on the edge of the picture
