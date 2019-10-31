@@ -47,7 +47,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#info {
+#info, #edit {
   height:100%;
   width: 100%;
   display: inline-block;
@@ -102,5 +102,10 @@ header {
 
 h1 {
   font-size: 6vh;;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 4vh;;
   font-weight: bold;
 }

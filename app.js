@@ -35,7 +35,7 @@ app.post('/fileupload', function (req, res) { //handles post request
 
       //check to make sure the right data was sent
       if(files.filetoupload.name == "" || rows <= 0 || columns <= 0 || w.length == 0) {
-        res.render('index');
+        res.render('index', {definitions: null});
         res.end(); //end
         return;
       }
@@ -81,7 +81,13 @@ app.post('/fileupload', function (req, res) { //handles post request
               console.error(err);
             }
             console.log("called python ye")
-            res.render('response');
+            var contents = fs.readFileSync("public/resources/dict.json");
+            // Define to JSON type
+             var jsonContent = JSON.parse(contents);
+
+            //get definitions
+
+            res.render('response', {definitions: jsonContent.words});
             res.end(); //end
           });
 

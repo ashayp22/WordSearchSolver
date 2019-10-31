@@ -43,6 +43,9 @@
     <br>
 
     <div id="edit">
+      <h3>GET PHOTO</h3>
+      <p>Take a photo of the wordsearch if you do not have one already</p>
+      <a href="#info" style="font-size: 2.5vh">already have picture</a><br>
       <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" width="640" height="480"></canvas><br>
     <input type = "button" id="snap" class = "myButton" onclick = "takePhoto()" value = "take photo"><br>
@@ -50,9 +53,9 @@
     <input type = "button" id="save" class = "myButton" onclick = "saveImage()" value = "save image"><br>
     <a id="link"></a><br>
 
-  </div>
+  </div><br><br>
     <div id="info">
-
+      <h3 id = "title">FIND WORDS<h3>
     <!-- rest  -->
     <form action="/fileupload" id = "form" method="post" enctype="multipart/form-data"><br>
       <p>it's best if the word search image is clear, and there is no extra space</p><br>

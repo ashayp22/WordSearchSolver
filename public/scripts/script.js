@@ -5,6 +5,8 @@ function yo() {
 
   document.getElementById("form").style.display = "none";
   document.getElementById("edit").style.display = "none";
+  document.getElementById("title").style.display = "none";
+
 
   document.getElementById("loader").style.visibility = "visible";
   document.getElementById("loader").style.display = "inline-block";
