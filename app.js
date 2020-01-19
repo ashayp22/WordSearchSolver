@@ -22,9 +22,6 @@ app.get('/', function (req, res) { //handles get request
 app.post('/fileupload', function (req, res) { //handles post request
   var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      //
-      // console.log(fields);
-      // console.log(files);
 
       //parsing words rows and columns
 
@@ -55,7 +52,6 @@ app.post('/fileupload', function (req, res) { //handles post request
      fs.writeFile('public/resources/info.json', json, 'utf8', writeCallback);
 
       //parsing image
-
 
       var extension = path.extname(files.filetoupload.name);
 
@@ -91,7 +87,7 @@ app.post('/fileupload', function (req, res) { //handles post request
             res.end(); //end
           });
 
-      } else if(extension == ".jpg"){ //JPEG
+      } else if(extension == ".jpg" || extension == ".jpeg"){ //JPEG
 
         mv(files.filetoupload.path, "public/resources/search.jpg", function(err) {
           // done. it tried fs.rename first, and then falls back to
@@ -122,9 +118,6 @@ app.post('/fileupload', function (req, res) { //handles post request
 
         });
 
-        // fs.rename(files.filetoupload.path, "public/resources/answer.jpg", function (err) {
-        //
-        // });
       } else { //wrong extension
         console.log('wrong extension!');
         res.render('index');

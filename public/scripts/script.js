@@ -18,6 +18,7 @@ function yo() {
 }
 
 
+
 var words = [];
 
 function addWord() {
@@ -73,6 +74,13 @@ function setup() {
           video.play();
       });
   }
+
+  //other
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    document.getElementById("edit").style.display = "none";
+  }
+
 }
 
 
@@ -164,9 +172,12 @@ function animate() {
 
   if(mousedown) {
     var position = getMousePos(c, evt);
-
+    console.log("touching");
     for(i = 0; i < 4; i++) {
-      if(Math.abs(position.x - points[i].x) < 15 && Math.abs(position.y - points[i].y) < 15) {
+      if(Math.abs(position.x - points[i].x) < 25 && Math.abs(position.y - points[i].y) < 25) {
+
+        console.log("yes");
+
         points[i].x = position.x;
         points[i].y = position.y;
 

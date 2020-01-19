@@ -41,12 +41,16 @@
 
     <div id="info">
 
-      <p>HERE IS THE CROSSWORD</p>
+      <p>HERE IS THE Word Search</p>
       <img src="resources/answer.jpg" alt='word search' id = "image" ><br>
       <% if(definitions !== null){ %>
         <p>DEFINITIONS</p>
         <p><%- definitions %></p>
       <% } %>
+
+      <input type = "button" class = "myButton" value = "Solve More Word Searches" onclick="window.location.href = '/';">
+      <br>
     </info>
+    <br>
   </body>
 </html>

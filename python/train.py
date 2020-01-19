@@ -56,8 +56,6 @@ for i in range(26):
 
         new_sample = cv2.resize(new_sample, (28, 28)) #resizes image to 128 * 128
 
-        # cv2.imshow("image", new_sample)
-        # cv2.waitKey(0)
 
         #adds the data
         X.append(new_sample)
@@ -69,8 +67,8 @@ print("done loading data")
 X = np.array(X)
 y = np.array(y)
 
-print(X.shape)
-print(y.shape)
+print(len(X))
+print(len(y))
 
 X = X.reshape(X.shape[0], 1, 28, 28).astype('float32')
 
@@ -80,16 +78,10 @@ X = X / 255
 y = np_utils.to_categorical(y)
 num_classes = y.shape[1]
 
-print("length")
-print(len(y[0]))
-print(y)
-print(num_classes)
 
 #create a test set
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 0)
-
-print("ready to train")
 
 
 def larger_model():

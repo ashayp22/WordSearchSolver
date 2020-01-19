@@ -34,7 +34,6 @@ yaml_file.close()
 model1 = model_from_yaml(loaded_model_yaml)
 # load weights into new model
 model1.load_weights("models/model.h5")
-print("Loaded model 1 from disk")
 
 # load YAML and create model
 yaml_file = open('models/model3.yaml', 'r')
@@ -43,7 +42,6 @@ yaml_file.close()
 model2 = model_from_yaml(loaded_model_yaml)
 # load weights into new model
 model2.load_weights("models/model3.h5")
-print("Loaded model 2 from disk")
 
 
 #LOAD THE WORDSEARCH
@@ -57,8 +55,6 @@ wordsearch = cv2.bitwise_not(wordsearch)
 #make white black and black white
 
 #display image
-# cv2.imshow("image", wordsearch)
-# cv2.waitKey(0)
 
 #get the number of rows and columns, and image dimensions
 
@@ -82,10 +78,6 @@ if rows < 0 or columns < 0:
 
 words = getWords().split(",")
 
-print(rows)
-print(columns)
-print(words)
-
 #--------------
 
 height, width = wordsearch.shape #height and width of image (in pixels)
@@ -95,8 +87,6 @@ height, width = wordsearch.shape #height and width of image (in pixels)
 letter_width = int(width / columns)
 letter_height = int(height / rows)
 
-print(letter_width)
-print(letter_height)
 
 #method for cropping the image
 
@@ -129,8 +119,6 @@ def getFormattedBoard(model, rows, columns, letter_width, letter_height, picture
         row_letters = []
 
         for c in range(columns):
-            # print(str(r) + " " + str(c))
-
             #subtracting helps with overshoot
             #adding helps with undershoot
             #right now, we need to account for undershooting
@@ -157,14 +145,8 @@ def getFormattedBoard(model, rows, columns, letter_width, letter_height, picture
                         letter[pixel_row][pixel_col] = 0
 
 
-            # cv2.imshow("image", letter)
-            # cv2.waitKey(0)
             if crop:
                 letter = crop_image(letter) #crop image
-
-            # letter = crop_image_two(letter)
-            # cv2.imshow("image", letter)
-            # cv2.waitKey(0)
 
             h1, w1 = letter.shape
 
@@ -175,8 +157,6 @@ def getFormattedBoard(model, rows, columns, letter_width, letter_height, picture
 
             letter = cv2.resize(letter, (28, 28)) #resize the image
 
-            # cv2.imshow("image", letter)
-            # cv2.waitKey(0)
 
             #reshape and normalize
             image = letter.reshape((1, 1, 28, 28)).astype("float32") / 255
@@ -184,15 +164,12 @@ def getFormattedBoard(model, rows, columns, letter_width, letter_height, picture
             result = model.predict(image);
             result = result[0]
 
-            # print(result)
-
             #find whats the highest probability
             max = np.where(result == np.amax(result))
 
 
             predicted_letter = chr(max[0] + 64)
             row_letters.append(predicted_letter.lower())
-            # print(predicted_letter.lower())
 
         newsearch.append(row_letters)
 
@@ -213,7 +190,6 @@ def search(board, actual_word):
             letter = board[r][c] #get the letter
             positions = [[r, c]]
             if letter == actual_word[0:1]: #make sure the letter is the first letter in the word
-                # print(str(r) + " " + str(c))
                 #now we look in all 8 directions
                 for a in range(-1, 2):
                     for b in range(-1, 2):
@@ -228,10 +204,8 @@ def search(board, actual_word):
                             positions.append([r + a * counter, c + b * counter])
                             counter += 1
                         if word[0:len(word)-1] == actual_word: #word found?
-                            # print("found")
                             return positions[0:len(positions)-1]
                         elif word == actual_word:
-                            # print("found")
                             return positions
     return []
 
@@ -242,14 +216,11 @@ highlighted = []
 for word in words:
     highlighted = search(np.copy(newsearch), word) + highlighted
 
-print("*")
 for word in words:
     highlighted = search(np.copy(newsearch2), word) + highlighted
 
 
 #now we gotta highlight
-
-# print(highlighted)
 
 wordsearch = cv2.bitwise_not(wordsearch) #turn back into original
 
@@ -294,24 +265,18 @@ def highlight(picture, r, c, letter_width, letter_height, rows, columns): #highl
 for h in highlighted:
     wordsearch = highlight(wordsearch, h[0], h[1], letter_width, letter_height, rows, columns)
 
-# cv2.imshow("image", wordsearch)
-# cv2.waitKey(0)
 
 cv2.imwrite("public/resources/answer.jpg", wordsearch)
 
 
 #finally, find dictionary
 
-# dictionary=PyDictionary()
-
 list = ""
 
 for word in words:
-    # list += (dictionary.meaning(word)[next(iter(dictionary.meaning(word)))])[0] + "<br"
     syns = wordnet.synsets(word)
     list += word + ": " + syns[0].definition() + "<br><br>"
 
-# print(list)
 
 data = {}
 data["words"] = list
