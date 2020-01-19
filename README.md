@@ -4,5 +4,5 @@ won 2nd place at the district level
 
 requirements:
 
--node.js with dependencies
--python 3.6 with tensorflow 1.x and other libraries
+- node.js with dependencies
+- python 3.6 with tensorflow 1.x and other libraries
