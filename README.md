@@ -67,7 +67,7 @@ A local version of the website should now be running on port 3000.
 
 ## Authors
 
-* **Ashay Parikh** - (https://ashayp.com/)
+* **Ashay Parikh** - [more details](https://ashayp.com/)
 
 ## License
 
