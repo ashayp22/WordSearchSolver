@@ -1,11 +1,5 @@
 # Word Search Solver
 
-
-requirements:
-
-- node.js with dependencies
-- python 3.6 with tensorflow 1.x and other libraries
-
 Word Search Solver was my submission to [Congressional App Challenge 2019-2020](https://www.congressionalappchallenge.us/) for Illinois District 8. The project is a website that uses deep learning to solve word search puzzles. After the user has to take a picture of their puzzle, the image is sent to a server that uses image processing algorithms and a Convolutional Neural Network to read the image. A word-search solving algorithm is then applied to the converted puzzle and the results are sent back to the user, with the original image having highlighted words. The user also recieves definitions on every word they are looking for. This app was designed for students who struggle with reading and writing. The project tied for 2nd place at the District Level
 
 ## Getting Started
@@ -18,8 +12,21 @@ Your machine needs to be compatible for running Java or C# Code. I recommend usi
 
 Node.js
 ```
-jMonkeyEngine
-NetBeans
+"dependencies": {
+    "body-parser": "^1.19.0",
+    "childprocess": "^2.0.2",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "helmet": "^3.21.2",
+    "jimp": "^0.8.5",
+    "jsdom": "^15.2.0",
+    "mv": "^2.1.1",
+    "path": "^0.12.7",
+    "png-to-jpeg": "^1.0.1",
+    "word-definition": "^2.1.6"
+  }
 ```
 Python 3.6
 ```
