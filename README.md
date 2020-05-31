@@ -57,15 +57,13 @@ from nltk.corpus import wordnet
 
 A step by step series of examples that tell you how to get a development env running
 
-Download the zipped version of this repository and choose the C# version or Java version of the algorithm. Then, add the unzipped files to your project directory
+Download the zipped version of this repository and unzip the folder.
 
-Next, adjust the hyperparameters found in Settings.cs or Settings.java if you want to.
+Next, navigate to the directory through command prompt or terminal and type the following:
 ```
-public static int NUM_AI = 40; //changes the number of agents to 40
+node app.js
 ```
 You should now be ready to implement the algorithm in your project.
-
-
 
 ## Authors
 
