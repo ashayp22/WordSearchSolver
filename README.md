@@ -8,7 +8,7 @@ These instructions will get you a copy of the algorithm and running on your loca
 
 ### Prerequisites
 
-Your machine needs to be compatible for running Java or C# Code. I recommend using the following IDEs or Engines that I have used the algorithm with:
+Your machine needs to be compatible for running Node.js and Python. These are the dependencies and modules needed.
 
 Node.js
 ```
@@ -30,8 +30,27 @@ Node.js
 ```
 Python 3.6
 ```
-Unity Game Engine
-Visual Studio
+from emnist import extract_training_samples
+from emnist import extract_test_samples
+import numpy as np
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Dropout
+from keras.layers import Flatten
+from keras.layers.convolutional import Conv2D
+from keras.layers.convolutional import MaxPooling2D
+from keras.utils import np_utils
+from keras import backend as K
+import matplotlib.pyplot as plt
+from keras.models import model_from_yaml
+import cv2
+import argparse
+import tkinter as tk
+import json
+from PIL import Image
+from PyDictionary import PyDictionary
+from nltk.corpus import wordnet
 ```
 
 ### Installing
