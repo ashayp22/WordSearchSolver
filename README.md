@@ -1,4 +1,4 @@
-# WordSearchSolver
+# Word Search Solver
 
 
 requirements:
