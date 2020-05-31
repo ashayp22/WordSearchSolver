@@ -63,7 +63,7 @@ Next, navigate to the directory through command prompt or terminal and type the 
 ```
 node app.js
 ```
-You should now be ready to implement the algorithm in your project.
+A local version of the website should now be running on port 3000.
 
 ## Authors
 
