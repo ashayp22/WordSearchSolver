@@ -4,7 +4,7 @@ Word Search Solver was my submission to [Congressional App Challenge 2019-2020](
 
 ## Getting Started
 
-These instructions will get you a copy of the algorithm and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the website and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
