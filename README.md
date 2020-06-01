@@ -1,6 +1,6 @@
 # Word Search Solver
 
-Word Search Solver was my submission to [Congressional App Challenge 2019-2020](https://www.congressionalappchallenge.us/) for Illinois District 8. The project is a website that uses deep learning to solve word search puzzles. After the user has to take a picture of their puzzle, the image is sent to a server that uses image processing algorithms and a Convolutional Neural Network to read the image. A word-search solving algorithm is then applied to the converted puzzle and the results are sent back to the user, with the original image having highlighted words. The user also recieves definitions on every word they are looking for. This app was designed for students who struggle with reading and writing. The project tied for 2nd place at the District Level
+Word Search Solver was my submission to [Congressional App Challenge 2019-2020](https://www.congressionalappchallenge.us/) for Illinois District 8. The project is a website that uses deep learning to solve word search puzzles. After the user has to take a picture of their puzzle, the image is sent to a server that uses image processing algorithms and a Convolutional Neural Network to read the image. A word-search solving algorithm is then applied to the converted puzzle and the results are sent back to the user, with the original image having highlighted words. The user also recieves definitions on every word they are looking for. This app was designed for students who struggle with reading and writing. The project tied for 2nd place at the District Level.
 
 ## Getting Started
 
