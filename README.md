@@ -4,6 +4,34 @@
 
 Word Search Solver was my submission to [Congressional App Challenge 2019-2020](https://www.congressionalappchallenge.us/) for Illinois District 8. The project is a website that uses deep learning to solve word search puzzles. After the user has to take a picture of their puzzle, the image is sent to a server that uses image processing algorithms and a Convolutional Neural Network to read the image. A word-search solving algorithm is then applied to the converted puzzle and the results are sent back to the user, with the original image having highlighted words. The user also recieves definitions on every word they are looking for. This app was designed for students who struggle with reading and writing. The project tied for 2nd place at the District Level.
 
+## Word Search Solving Process
+
+1. Obtain colored picture of word search puzzle
+2. Convert to black and white
+3. Obtain the number of rows and columns
+4. Crop out the word search to get images of individual letters
+5. Run the CNN on each image to obtain a letter
+```
+def larger_model():
+# create model
+    model = Sequential()
+    model.add(Conv2D(45, (5, 5), input_shape=(1, 28, 28), activation='relu'))
+    model.add(MaxPooling2D())
+    model.add(Conv2D(25, (2, 2), activation='relu'))
+    model.add(MaxPooling2D())
+    model.add(Dropout(0.35))
+    model.add(Flatten())
+    model.add(Dense(120, activation='relu'))
+    model.add(Dense(70, activation='relu'))
+    model.add(Dense(30, activation='relu'))
+    model.add(Dense(num_classes, activation='softmax'))
+    # Compile model
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    return model
+```
+7. Create a 2D array of letters, which represents the word search puzzle, and search for the given words using a Brute-Force algorithm
+8. Highlight the words found
+
 ## Getting Started
 
 These instructions will get you a copy of the website running on your local machine for development and testing purposes.
