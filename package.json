@@ -12,7 +12,7 @@
     "body-parser": "^1.19.0",
     "childprocess": "^2.0.2",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
     "helmet": "^3.21.2",
